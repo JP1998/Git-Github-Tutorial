@@ -131,12 +131,15 @@
 	\newpage
 	\pagestyle{fancy}
 
+	
 	\section*{Disclaimer}
 		
 		Since the usage of the git commandline and ui-clients for git work in basically the same way this (written) tutorial only shows you how to use Git and GitHub from the commandline. Other UIs will be shown during the presentation, though.
 		
 		On the topic of commandlines: Every command / file shown in this tutorial is enclosed in a box with a black outline. In case a command is shown, any user input will be denoted by a preceding dollar sign (as it's done by Git for Windows).
-	
+
+	\section{Jean-Pierre}
+		
 	\section{Creation of a local repository}
 	
 		There are two different ways to create a local repository, which is used to track your own changes in the exisiting code.
@@ -244,5 +247,19 @@ lib/
 		\end{lstlisting}
 		
 		After this your pushes on the given branch will automatically pushed to the given remote repository.
+		
+
+	\section{Daniel}
+			
+	\section{Conflict resolving}
+		
+		Git is not only useful for working alone. It is used to manage many users working in a single project on different branches. Branches are different directions the project is heading of to. These can be represented by just older or more recent code or different features that are developed at the same time. To simplify working with different half implemented features, git uses branches. A user that creates a commit on a given branch, lets call it branch A, does not affect work that is already or concurrently done on Branch B. Therefore these two branches are seperate from each other. They may come back together at some point, but they can also stay divergent all the time. Normally the use case of git is to have a master branch of the released version of the product with a develop branch that has experimental new features. Then there are different feature branches that all implement a single new feature. These branches are where the developers spent most of their time. They implement the features they want to and then merge the branch back into develop where the code waits to get released with the next version.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.9\linewidth]{gitbranches.png}
+			\label{fig1}
+			\caption{Source: https://help.talend.com/reader/GDDhoNyPTrERkrITzE6qPQ/QhAXF8ijSOHq~lhrVCoLKQ}
+		\end{figure}
 
 \end{document}
