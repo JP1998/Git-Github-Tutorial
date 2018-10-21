@@ -148,4 +148,59 @@
 		\end{itemize}
 	\end{frame}
 
+	\section{Staging and committing}
+	\begin{frame}
+		\frametitle{Staging and committing}\pause
+		\begin{itemize}
+			\item stage changes\newline
+			\lstinline|$ git add (--all / <files>)| \pause
+			\item commit all the staged changes\newline
+			\lstinline|$ git commit -m "<Message>"| \pause
+			\item Commit messages are important!
+		\end{itemize}
+	\end{frame}
+
+	\section{Display changes and commits}
+	\begin{frame}
+		\frametitle{Display changes and commits}\pause
+		\begin{itemize}
+			\item see changes in code\newline
+			\lstinline|$ git diff <commit1> <commit2> <files>| \pause
+			\item see staged changes\newline
+			\lstinline|$ git status| \pause
+			\item see commit history\newline
+			\lstinline|$ git log|
+		\end{itemize}
+	\end{frame}
+
+	\section{Remote repositories}
+	\begin{frame}
+		\frametitle{Remote repositories}\pause
+		\begin{itemize}
+			\item add remote repository\newline
+			\lstinline|$ git remote add <Name> <URL>| \pause
+			\item not needed when repository was cloned \pause
+			\item set remote repository as up-stream\newline
+			\lstinline|$ git branch -u <Name> <Branch>|\newline
+			\lstinline|$ git push -u <Name> <Branch>| \pause
+			\item push all commits to remote repository\newline
+			\lstinline|$ git push| \pause
+			\item pulls all commits from remote repository\newline
+			\lstinline|$ git pull| 
+		\end{itemize}
+	\end{frame}
+
+	\section{Remote repositories}
+	\begin{frame}
+		\frametitle{Remote repositories}\pause
+		\begin{itemize}
+			\item list tags\newline
+			\lstinline|$ git tag --list| \pause
+			\item tag a commit\newline
+			\lstinline|$ git tag -a <version> -m "<message>" <commit>| \pause
+			\item push all tags\newline
+			\lstinline|$ git push origin --tags|
+		\end{itemize}
+	\end{frame}
+
 \end{document}
