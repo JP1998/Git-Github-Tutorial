@@ -79,7 +79,8 @@
 
 	\section{General}
 	\begin{frame}
-		\begin{itemize}\pause
+		\frametitle{General}\pause
+		\begin{itemize}
 			\item Git is a \textbf{V}ersion \textbf{C}ontrol \textbf{S}ystem \pause
 			\item created in 2005 by Linus Torvalds
 		\end{itemize}
@@ -87,7 +88,8 @@
 
 	\section{Terminology}
 	\begin{frame}
-		\begin{itemize}\pause
+		\frametitle{Terminology}\pause
+		\begin{itemize}
 			\item Commit (History) \pause
 			\item Branch (Merge) \pause
 			\item (Remote) Repository
@@ -96,6 +98,7 @@
 
 	\section{Git areas}
 	\begin{frame}
+		\frametitle{Git areas}
 		\begin{figure}[h]
 			\centering
 			\includegraphics[width=.9\linewidth]{git-areas.png}
@@ -104,7 +107,8 @@
 	\end{frame}
 
 	\begin{frame}
-		\begin{itemize}\pause
+		\frametitle{Git areas}\pause
+		\begin{itemize}
 			\item exclude files with \lstinline|.gitignore|-file \pause
 			\item contains patterns \pause
 			\item \lstinline|*| matches anything \pause
@@ -114,7 +118,7 @@
 		\end{itemize}
 	\end{frame}
 
-	\begin{frame}
+	\begin{frame}[fragile]
 		\centering What do the following rules exclude?
 		\begin{lstlisting}
 /src/
@@ -124,7 +128,8 @@
 
 	\section{Local repositories}
 	\begin{frame}
-		\begin{itemize}\pause
+		\frametitle{Local repositories}\pause
+		\begin{itemize}
 			\item create new local repository (\lstinline|git init|) \pause
 			\item clone a remote repository (\lstinline|git clone <URL>|)
 		\end{itemize}
