@@ -131,7 +131,6 @@
 	\newpage
 	\pagestyle{fancy}
 
-	
 	\section*{Disclaimer}
 		
 		Since the usage of the git commandline and ui-clients for git work in basically the same way this (written) tutorial only shows you how to use Git and GitHub from the commandline. Other UIs will be shown during the presentation, though.
@@ -140,18 +139,6 @@
 
 	\section{Jean-Pierre}
 		
-	\section{Creation of a local repository}
-	
-		There are two different ways to create a local repository, which is used to track your own changes in the exisiting code.
-		
-		The first option you have is to create an \glqq empty\grqq~ repository. In case this is done in a folder, which contains files, these files are not being tracked yet. This can be done using the following command.
-		
-		\begin{lstlisting}
-$ git init
-		\end{lstlisting}
-		
-		The second option (which is probably used more often in teamwork), is to clone from an already existing remote repository, like an repository on GitHub or, an ordinary Git repository, you or a team member has created on a simple file server.
-
 		\begin{lstlisting}
 $ git clone https://github.com/<User-Name>/<Repository-Name>.git
 		\end{lstlisting}
@@ -166,7 +153,6 @@ $ git config --global user.email <your Github-E-Mail>
 		\end{lstlisting}
 		
 		In case you need verification Git will ask you for valid credentials.
-		\newpage
 				
 	\section{Make Git ignore certain files / folders}
 		
@@ -181,6 +167,18 @@ target/
 !.idea/copyright/
 lib/
 		\end{lstlisting}
+
+	\section{Creation of a local repository}
+
+		There are two different ways to create a local repository, which is used to track your own changes in the exisiting code.
+
+		The first option you have is to create an \glqq empty\grqq~ repository. In case this is done in a folder, which contains files, these files are not being tracked yet. This can be done using the following command.
+
+		\begin{lstlisting}
+$ git init
+		\end{lstlisting}
+
+		The second option (which is probably used more often in teamwork), is to clone from an already existing remote repository, like an repository on GitHub or, an ordinary Git repository, you or a team member has created on a simple file server.
 
 	\section{Make versions of files}
 	
@@ -247,7 +245,6 @@ lib/
 		\end{lstlisting}
 		
 		After this your pushes on the given branch will automatically pushed to the given remote repository.
-		
 
 	\section{Daniel}
 			
@@ -257,7 +254,7 @@ lib/
 		
 		\begin{figure}[h]
 			\centering
-			\includegraphics[width=.9\linewidth]{gitbranches.png}
+			\includegraphics[width=.725\linewidth]{gitbranches.png}
 			\label{fig1}
 			\caption{Source: https://help.talend.com/reader/GDDhoNyPTrERkrITzE6qPQ/QhAXF8ijSOHq~lhrVCoLKQ}
 		\end{figure}
