@@ -248,6 +248,9 @@ $ git clone https://github.com/<User-Name>/<Repository-Name>.git
 
 	\section{Daniel}
 			
+	\section{branches}
+	
+	TODO
 	\section{Conflict resolving}
 		
 		Git is not only useful for working alone. It is used to manage many users working in a single project on different branches. Branches are different directions the project is heading of to. These can be represented by just older or more recent code or different features that are developed at the same time. To simplify working with different half implemented features, git uses branches. A user that creates a commit on a given branch, lets call it branch A, does not affect work that is already or concurrently done on Branch B. Therefore these two branches are seperate from each other. They may come back together at some point, but they can also stay divergent all the time. Normally the use case of git is to have a master branch of the released version of the product with a develop branch that has experimental new features. Then there are different feature branches that all implement a single new feature. These branches are where the developers spent most of their time. They implement the features they want to and then merge the branch back into develop where the code waits to get released with the next version.
@@ -256,7 +259,30 @@ $ git clone https://github.com/<User-Name>/<Repository-Name>.git
 			\centering
 			\includegraphics[width=.725\linewidth]{gitbranches.png}
 			\label{fig1}
-			\caption{Source: https://help.talend.com/reader/GDDhoNyPTrERkrITzE6qPQ/QhAXF8ijSOHq~lhrVCoLKQ}
+			\caption{Here you can see the mentioned workflow. Source: https://help.talend.com/reader/GDDhoNyPTrERkrITzE6qPQ/QhAXF8ijSOHq~lhrVCoLKQ}
 		\end{figure}
+		
+		To bring two branches back together the user has to merge them. This can either be done by a merge commit or by rebasing the branch that needs to be merged onto the branch it needs to be merged into. A merge commit is a commit, that merges the two branches. The merge itself is started by:
+		
+		\begin{lstlisting}
+> git merge <branchname>
+		\end{lstlisting}
+		
+		This merges the given branch into the current branch. When there are no conflicting changes, meaning no conflicting lines, the merge commit is empty and the branches are merged easily. When there are conflicting changes, these changes pause the merge process and need to be resolved before continuing. The conflicting lines then get marked in the File and the user has to decide, which version is right. After doing so, the merge is continues by typing 
+		
+		\begin{lstlisting}
+> git merge --continue
+		\end{lstlisting}
+		
+		When you want to avoid a merge commit, a rebase is what you want. Rebasing a branch means to change the point, where it is diverging from the other branches to the point given in the command.
+		
+		\begin{lstlisting}
+> git rebase <commit id / branch>
+		\end{lstlisting}
+		
+		When typing this, git rolls back to the point where the two branches diverged, then applies all the commits that happened to the point you specified in your command and then tries to apply all the commits that happened on the current branch since it diverged. Again, if there are no conflicting changes, the rebase is successful and your branch can now be merged with the --ff-only option, meaning all the changes will be coppied over to the branch you are merging into without creating new commits.
+		
+		
+		
 
 \end{document}
