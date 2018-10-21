@@ -194,7 +194,6 @@ $ git clone https://github.com/<User-Name>/<Repository-Name>.git
 		\begin{lstlisting}
 > git commit -m "<Commit-message (can be multi-line)>"
 		\end{lstlisting}
-		\newpage
 		
 		Commit-messages are not easy to get right, especially as a beginner to Git, but good commit messages make your work with Git much easier. Especially since this allows you to review your commit history efficiently and see who changed what, and why they did so. To explain commit messages we'll have to break it down to its components. A commit message always has a caption, which is usually the first line of the actual message. This caption should be \textbf{separated} from the body of the message \textbf{by a blank line}. Also the caption should always be \textbf{capitalized}, and have a \textbf{maximum of 50 characters} in it. A caption is supposed to make sense to be filled into the sentence \glqq If applied, this commit will \_\grqq, which means that the imperative mood is to be used.The body of the commit message should be wrapped at \textbf{72 characters}, and should explain what has been done and why this has been done. You sould omit how you achieved what you have done, since this (should be) easily readable from the changes you have made. \footnote{This paragraph heavily relies on the blog posts found at \lstinline|https://medium.com/@nawarpianist/git-commit-best-practices-dab8d722de99| and \lstinline|https://chris.beams.io/posts/git-commit/|}
 		
@@ -246,6 +245,33 @@ $ git clone https://github.com/<User-Name>/<Repository-Name>.git
 		
 		After this your pushes on the given branch will automatically pushed to the given remote repository.
 
+	\section{Marking important points in your history}
+	
+		Git allows you to \lstinline|tag| specific points in your history, which is usually used to mark specific release versions. Those tags can be listed with the \lstinline|--list| option.
+		
+		\begin{lstlisting}
+> git tag --list
+		\end{lstlisting}
+		
+		To create a tag with a specific message you can use the options \lstinline|-a| and \lstinline|-m|. specific release versions. In case you want to create a tag after a certain commit you can simply state this commits hash (or the beginning of it until it is unique) after the command.
+		
+		\begin{lstlisting}
+> git tag -a <your version> -m "<your message>" <hash of the commit>
+		\end{lstlisting}
+		
+		To share tags to remote repositories (which is not done automatically) you'll either push a single tag with the following command: 
+		
+		\begin{lstlisting}
+> git push origin <your version>
+		\end{lstlisting}
+		
+		Or to push all tags that have not yet been pushed, you can use this command:
+		
+		\begin{lstlisting}
+> git push origin --tags
+		\end{lstlisting}
+		\newpage
+		
 	\section{Daniel}
 			
 	\section{branches}
