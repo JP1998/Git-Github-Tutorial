@@ -250,9 +250,6 @@ $ git clone https://github.com/<User-Name>/<Repository-Name>.git
 			
 	\section{branches}
 	
-	TODO
-	\section{Conflict resolving}
-		
 		Git is not only useful for working alone. It is used to manage many users working in a single project on different branches. Branches are different directions the project is heading of to. These can be represented by just older or more recent code or different features that are developed at the same time. To simplify working with different half implemented features, git uses branches. A user that creates a commit on a given branch, lets call it branch A, does not affect work that is already or concurrently done on Branch B. Therefore these two branches are seperate from each other. They may come back together at some point, but they can also stay divergent all the time. Normally the use case of git is to have a master branch of the released version of the product with a develop branch that has experimental new features. Then there are different feature branches that all implement a single new feature. These branches are where the developers spent most of their time. They implement the features they want to and then merge the branch back into develop where the code waits to get released with the next version.
 		
 		\begin{figure}[h]
@@ -261,6 +258,8 @@ $ git clone https://github.com/<User-Name>/<Repository-Name>.git
 			\label{fig1}
 			\caption{Here you can see the mentioned workflow. Source: https://help.talend.com/reader/GDDhoNyPTrERkrITzE6qPQ/QhAXF8ijSOHq~lhrVCoLKQ}
 		\end{figure}
+		
+	\section{merging}
 		
 		To bring two branches back together the user has to merge them. This can either be done by a merge commit or by rebasing the branch that needs to be merged onto the branch it needs to be merged into. A merge commit is a commit, that merges the two branches. The merge itself is started by:
 		
@@ -274,15 +273,40 @@ $ git clone https://github.com/<User-Name>/<Repository-Name>.git
 > git merge --continue
 		\end{lstlisting}
 		
+	\section{rebasing}
 		When you want to avoid a merge commit, a rebase is what you want. Rebasing a branch means to change the point, where it is diverging from the other branches to the point given in the command.
+		
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.725\linewidth]{gitrebase.png}
+			\label{fig1}
+			\caption{Here you can see the mentioned workflow. Source: https://help.talend.com/reader/GDDhoNyPTrERkrITzE6qPQ/QhAXF8ijSOHq~lhrVCoLKQ}
+		\end{figure}
 		
 		\begin{lstlisting}
 > git rebase <commit id / branch>
 		\end{lstlisting}
 		
-		When typing this, git rolls back to the point where the two branches diverged, then applies all the commits that happened to the point you specified in your command and then tries to apply all the commits that happened on the current branch since it diverged. Again, if there are no conflicting changes, the rebase is successful and your branch can now be merged with the --ff-only option, meaning all the changes will be coppied over to the branch you are merging into without creating new commits.
+		When typing this, git rolls back to the point where the two branches diverged, then applies all the commits that happened to the point you specified in your command and then tries to apply all the commits that happened on the current branch since it diverged. Again, if there are no conflicting changes, the rebase is successful and your branch can now be merged with the \lstinline|--ff-only| option, meaning all the changes will be copied over to the branch you are merging into without creating new commits.
 		
+	\section{remotes}
 		
+		Working locally with git is fine and good, but when you want to efficiently share your work you will need a remote. There are many services that serve as a git remote like GitHub, Bitbucket or Gitlab. These remotes just serve as a online copy of the local git tracked directory. This has the advantage, that you do not need internet access all the time to work with other people. You always have the full history of the git directory on your computer.
 		
+	\section{GitHub}
+		
+		As we are using GitHub in our group, we focus on GitHub for now. But most of the features mentioned here work pretty much the same for the other services. The first thing is 
+		
+		\subsubsection{branch protection}
+		
+			As you work with other people, it gets more and more important to secure some branches. These secured branches can (depending on the configuration) normally not be simply pushed to. Also you can just disable force pushes, making the commits immutable.
+		
+		\subsubsection{pull requests}
+		
+			If a branch is protected from pushing, you will probably need a pull request for your changes to be added to it. A pull request, is a request you make for the other collaborators to check your changes and review them. Once you reach the configured threshold of reviews, your changes can be merged. Within the GUI you then have the same merge options as previously explained.
+		
+		\subsubsection{issues}
+		
+			On GitHub there is also a Ticket System for users that have problems with your project. One can raise a bug or create a ticket in general to which the collaborators can write comments and do their best to resolve the issue.
 
 \end{document}
