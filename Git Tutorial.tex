@@ -55,26 +55,20 @@
 \definecolor{sourcecodedocblue}{rgb}{0.25,0.35,0.75} % javadoc
  
 \lstset{
-	language=C,                                   % the language of the code
-	basicstyle=\ttfamily\small,                     % the size of the fonts that are used for the code
-	keywordstyle=\color{sourcecodedocblue}\bfseries,      % keyword style
-	stringstyle=\color{sourcecodered},                   % string literal style
-	commentstyle=\color{sourcecodegreen},                % comment style
-	morecomment=[s][\color{sourcecodepurple}]{INPUT}{\ },
-	morecomment=[s][\color{sourcecodepurple}]{OUTPUT}{\ },
-	morecomment=[s][\color{sourcecodepurple}]{INPUT_PULLUP}{\ },
-	morecomment=[s][\color{sourcecodepurple}]{STATE_NOLED}{\ },	morecomment=[s][\color{sourcecodepurple}]{HIGH}{\ },
-	morecomment=[s][\color{sourcecodepurple}]{LOW}{\ },
-	morekeywords={uint8_t, uint16_t, uint32_t, uint64_t},
-	numbers=none,                                        % where to put the line-numbers; possible values are (none, left, right)
-	numberstyle=\small\color{black},                % the style that is used for the line-numbers
-	numbersep=6pt,                                       % how far the line-numbers are from the code
-	tabsize=4,	                   	                     % sets default tabsize to 4 spaces
-	showspaces=false,                                    % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
-	showstringspaces=false,                              % underline spaces within strings only
-	showtabs=false,                                      % show tabs within strings adding particular underscores
-%	title=\lstname,                                      % show the filename of files included with \lstinputlisting; also try caption instead of title
-	breaklines=true,                                     % sets automatic line breaking
+	language=C,                                    % the language of the code
+	basicstyle=\ttfamily\small,                    % the size of the fonts that are used for the code
+	keywordstyle=\ttfamily\small,                  % keyword style
+	stringstyle=\ttfamily\small,                   % string literal style
+	commentstyle=\ttfamily\small,                  % comment style
+	numbers=none,                                  % where to put the line-numbers; possible values are (none, left, right)
+	numberstyle=\small\color{black},               % the style that is used for the line-numbers
+	numbersep=6pt,                                 % how far the line-numbers are from the code
+	tabsize=4,	                   	               % sets default tabsize to 4 spaces
+	showspaces=false,                              % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,                        % underline spaces within strings only
+	showtabs=false,                                % show tabs within strings adding particular underscores
+%	title=\lstname,                                % show the filename of files included with \lstinputlisting; also try caption instead of title
+	breaklines=true,                               % sets automatic line breaking
 	breakatwhitespace=true,                             % sets if automatic breaks should only happen at whitespace
 	frame=single,	                                     % adds a frame around the code
 	rulecolor=\color{black},                             % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
@@ -140,6 +134,8 @@
 	\section*{Disclaimer}
 		
 		Since the usage of the git commandline and ui-clients for git work in basically the same way this (written) tutorial only shows you how to use Git and GitHub from the commandline. Other UIs will be shown during the presentation, though.
+		
+		On the topic of commandlines: Every command / file shown in this tutorial is enclosed in a box with a black outline. In case a command is shown, any user input will be denoted by a preceding dollar sign (as it's done by Git for Windows).
 	
 	\section{Creation of a local repository}
 	
@@ -148,21 +144,54 @@
 		The first option you have is to create an \glqq empty\grqq~ repository. In case this is done in a folder, which contains files, these files are not being tracked yet. This can be done using the following command.
 		
 		\begin{lstlisting}
-> git init
-Initialized empty Git repository in <Path>/.git/
+$ git init
 		\end{lstlisting}
 		
 		The second option (which is probably used more often in teamwork), is to clone from an already existing remote repository, like an repository on GitHub or, an ordinary Git repository, you or a team member has created on a simple file server.
 
 		\begin{lstlisting}
-> git clone https://github.com/<User-Name>/<Repository-Name>.git
-Cloning into '<Repository-Name>'...
-remote: Enumerating objects: 26, done.
-remote: Counting objects: 100% (26/26), done.
-remote: Compressing objects: 100% (23/23), done.
-remote: Total 178 (delta 0), reused 17 (delta 0), pack-reused 152
-Receiving objects: 100% (178/178), 145.19 KiB | 78.00 KiB/s, done.
-Resolving deltas: 100% (29/29), done.
+$ git clone https://github.com/<User-Name>/<Repository-Name>.git
+		\end{lstlisting}
+		
+	\section{Use your Github user in Git}
+	
+		To use your GitHub user in Git (and thus also link your local commits to your Github account) you can change the user name and e-mail-adress as follows:
+		
+		\begin{lstlisting}
+$ git config --global user.name "<your Github-Username>"
+$ git config --global user.email <your Github-E-Mail>
+		\end{lstlisting}
+		
+		In case you need verification Git will ask you for valid credentials.
+		\newpage
+				
+	\section{Make Git ignore certain files / folders}
+		
+		To make Git ignore certain files and folders you'll have to create an \lstinline|.gitignore|-file. Every line in this file will represent a pattern to excluded files, also called a rule. In case you want files with a certain pattern to be only excluded in the root-directory you'll have to precede the pattern with a forward-slash \lstinline|'/'|. To exclude folders you'll have to follow the pattern by a forward-slash \lstinline|'/'|. To make a pattern match anything you can simply type an asterisk \lstinline|'*'|. To create an exception to a general rule, you can simply give a more specific rule (for the files you want to \textbf{include}), and precede that rule with a bang \lstinline|'!'|.
+		
+		The \lstinline|.gitignore|-file is always useful to exclude IDE-specific files (e.g. \lstinline|.iml|-files in IntelliJ) or compiled binaries. An example \lstinline|.gitignore|-file for a personal Java-project is shown below:
+		
+		\begin{lstlisting}
+*.iml
+target/
+.idea/*
+!.idea/copyright/
+lib/
+		\end{lstlisting}
+
+	\section{Make versions of files}
+	
+		Since Git and Github is all about file versioning, we can make Git capture single versions of files with commits. Before creating commits though, we'll have to add changes that are to be included in the version we want to capture. This process is called 'staging changes' and can be done either by staging all changes, or by only staging certain files.
+		
+		\begin{lstlisting}
+> git add --all
+> git add <files>
+		\end{lstlisting}
+		
+		To then create a commit with the staged changes you can use following command:
+		
+		\begin{lstlisting}
+> git commit -m "<Commit-message (can be multi-line)>"
 		\end{lstlisting}
 	
 \end{document}
