@@ -79,7 +79,7 @@
 
 	\section{General}
 	\begin{frame}
-		\begin{itemize}
+		\begin{itemize}\pause
 			\item Git is a \textbf{V}ersion \textbf{C}ontrol \textbf{S}ystem \pause
 			\item created in 2005 by Linus Torvalds
 		\end{itemize}
@@ -87,7 +87,7 @@
 
 	\section{Terminology}
 	\begin{frame}
-		\begin{itemize}
+		\begin{itemize}\pause
 			\item Commit (History) \pause
 			\item Branch (Merge) \pause
 			\item (Remote) Repository
@@ -96,11 +96,40 @@
 
 	\section{Git areas}
 	\begin{frame}
-		\begin{itemize}
-			\item Working directory (index) \pause
-			\item Staging area \pause
-			\item Repository
+		\begin{figure}[h]
+			\centering
+			\includegraphics[width=.9\linewidth]{git-areas.png}
+			\label{fig1}
+		\end{figure}
+	\end{frame}
+
+	\begin{frame}
+		\begin{itemize}\pause
+			\item exclude files with \lstinline|.gitignore|-file \pause
+			\item contains patterns \pause
+			\item \lstinline|*| matches anything \pause
+			\item postceding \lstinline|/| matches a folder \pause
+			\item preceding \lstinline|/| matches only in the root folder \pause
+			\item preceding \lstinline|!| negates the pattern (i.e. includes files)
 		\end{itemize}
 	\end{frame}
+
+	\begin{frame}
+		\centering What do the following rules exclude?
+		\begin{lstlisting}
+/src/
+!/src/working/
+		\end{lstlisting}
+	\end{frame}
+
+	\section{Local repositories}
+	\begin{frame}
+		\begin{itemize}\pause
+			\item create new local repository (\lstinline|git init|) \pause
+			\item clone a remote repository (\lstinline|git clone <URL>|)
+		\end{itemize}
+	\end{frame}
+
+	
 
 \end{document}
