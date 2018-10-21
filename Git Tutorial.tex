@@ -174,7 +174,7 @@ $ git config --global user.email <your Github-E-Mail>
 		\begin{lstlisting}
 *.iml
 target/
-.idea/*
+.idea/
 !.idea/copyright/
 lib/
 		\end{lstlisting}
@@ -193,5 +193,56 @@ lib/
 		\begin{lstlisting}
 > git commit -m "<Commit-message (can be multi-line)>"
 		\end{lstlisting}
+		\newpage
+		
+		Commit-messages are not easy to get right, especially as a beginner to Git, but good commit messages make your work with Git much easier. Especially since this allows you to review your commit history efficiently and see who changed what, and why they did so. To explain commit messages we'll have to break it down to its components. A commit message always has a caption, which is usually the first line of the actual message. This caption should be \textbf{separated} from the body of the message \textbf{by a blank line}. Also the caption should always be \textbf{capitalized}, and have a \textbf{maximum of 50 characters} in it. A caption is supposed to make sense to be filled into the sentence \glqq If applied, this commit will \_\grqq, which means that the imperative mood is to be used.The body of the commit message should be wrapped at \textbf{72 characters}, and should explain what has been done and why this has been done. You sould omit how you achieved what you have done, since this (should be) easily readable from the changes you have made. \footnote{This paragraph heavily relies on the blog posts found at \lstinline|https://medium.com/@nawarpianist/git-commit-best-practices-dab8d722de99| and \lstinline|https://chris.beams.io/posts/git-commit/|}
+		
+	\section{Showing changes and commits}
+		
+		There are different ways of showing your changes and commits. To show the differences between two commits or the current changes to certain or all files you can simply use \lstinline|diff|.
+		
+		\begin{lstlisting}
+> git diff <commit1> <commit2>
+> git diff <commit> <filesToCompare>
+> git diff
+		\end{lstlisting}
+		
+		The first command will list every change you have made between the given commits. The second will list every change you have made in the given files since the given commit, and the last command will list every change you have made since the last commit. Also note that there are more options on how to use this command than we show you here.
+		\newpage
+		
+		To show files which have been changed, created, deleted or moved (while the last two options only apply to tracked files) you can use the \lstinline|status|-command. It also shows which files are not tracked, or which changes are currently staged to be committed.
+		
+		\begin{lstlisting}
+> git status
+		\end{lstlisting}
+		
+		To show the commit history you can use the \lstinline|log|-command. To look at the commit history makes sense, whenever you need to determine the hashes of certain commits (can be used e.g. for \lstinline|diff|) or to see whether something has already been done by someone.
+		
+		\begin{lstlisting}
+> git log
+		\end{lstlisting}
+		
+	\section{Managing a remote repository}
 	
+		To manage a remote repository (like a repository hosted on Github) you'll have to know two basic commands. Those are push your commits (i.e. versions) to the remote repository, or pull all the commits from the repository. And those are also the names of the git-commands.
+		
+		\begin{lstlisting}
+> git push
+> git pull
+		\end{lstlisting}
+		
+		In case you have created an empty repository, you'll have to add the remote repository first, though. This can be done with the \lstinline|remote-add|-command. The name of a remote repository usually is \lstinline|origin|.
+		
+		\begin{lstlisting}
+> git remote add <Name> <URL>
+		\end{lstlisting}
+		
+		To then push you'll also have to set this repository as the repository to push to.
+		
+		\begin{lstlisting}
+> git push -u <Name> <Branch>
+		\end{lstlisting}
+		
+		After this your pushes on the given branch will automatically pushed to the given remote repository.
+
 \end{document}
