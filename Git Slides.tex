@@ -91,7 +91,6 @@
 		\frametitle{Terminology}\pause
 		\begin{itemize}
 			\item Commit (History) \pause
-			\item Branch (Merge) \pause
 			\item (Remote) Repository
 		\end{itemize}
 	\end{frame}
@@ -190,7 +189,6 @@
 		\end{itemize}
 	\end{frame}
 
-	\section{Remote repositories}
 	\begin{frame}
 		\frametitle{Remote repositories}\pause
 		\begin{itemize}
@@ -202,5 +200,126 @@
 			\lstinline|$ git push origin --tags|
 		\end{itemize}
 	\end{frame}
+	
+	\section{Branches}
+	\begin{frame}
+		\frametitle{Branches}\pause
+		\includegraphics[width=.725\linewidth]{gitbranches.png}\pause
+		\begin{itemize}
+			\item different directions the project is heading of into\pause
+			\item different features (feature branches)\pause
+			\item can be merged again\newline
+		\end{itemize}
+	\end{frame}
+	
+	\section{merging}
+	\begin{frame}
+		\frametitle{merging}\pause
+		\begin{itemize}
+			\item bringing two branches back together\newline
+			\lstinline|$ git merge <branchname>| \pause\newline
+			\item merges \lstinline|<branchname>| into current branch\pause
+		\end{itemize}
+		\includegraphics[width=.725\linewidth]{gitbranchesslim.png}
+	\end{frame}
+	
+	\section{conflict resolving}
+	\begin{frame}[fragile]
+		\frametitle{conflict resolving}\pause
+		\begin{itemize}
+			\item conflicts happen when two people edit the same line\pause
+			\item[] 
+			\begin{lstlisting}
+To help you with git,
+<<<<<<< HEAD
+this line has many infos
+=======
+I write many different tutorials
+>>>>>>> conflicting branch
+			\end{lstlisting}
+			\item resolve them manually by editing the files\pause\newline
+			\item \lstinline|git add <conflicting-file>|
+		\end{itemize}
+	\end{frame}
+	
+	\section{rebasing}
+	\begin{frame}
+		\frametitle{rebasing}\pause
+		\begin{itemize}
+			\item reapply commits on top of another base tip\pause
+			\item keeps the git history straight\pause
+			\item allows for \lstinline|--ff-only| merge\newline
+			\lstinline|$ git merge --ff-only <branchname>| \pause
+		\end{itemize}
+		\includegraphics[width=.725\linewidth]{gitrebase.png}
+	\end{frame}
+	
+	\section{Rewriting history}
+	\begin{frame}
+		\frametitle{Rewriting history}\pause
+		\begin{itemize}
+			\item You can rewrite git history\pause\newline
+			\item \lstinline|$ git rebase -i HEAD~<number>|\newline
+			\lstinline|<number>| is the number of commits you want to go back and edit\pause
+		\end{itemize}
+	\end{frame}
+	
+	\begin{frame}[fragile]
+		\frametitle{Rewriting history}\pause
+		\lstinline|$ git rebase -i HEAD~<number>|\newline
+		\begin{lstlisting}[basicstyle=\tiny]
+pick ce28e71 change gitignore intellij
+pick 4067bbb Add chapter about tags
+pick 78580c3 Change some slides
+pick 1641359 Complete my slides
+pick 091611d add current pdf version
+pick db3e8b4 add Daniels part to slides
+
+# Rebase 3a4a271..db3e8b4 onto 3a4a271 (7 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop to amend
+# s, squash <commit> = use commit, but meld into previous commit
+# These lines can be re-ordered; they are executed from top to bottom.                                                           
+#
+# If you remove a commit here THAT COMMIT WILL BE LOST.
+		\end{lstlisting}
+	\end{frame}
+	
+	\section{GitHub (\& others)}
+	\begin{frame}
+		\frametitle{GitHub (\& others)}\pause
+		
+		\begin{minipage}{0.4\textwidth} 
+				complete copy \newline\newline
+				branch protection \newline\newline
+				pull requests \newline\newline
+				issues \newline
+
+		% \caption{Der Text}
+		% \label{Text}
+		\end{minipage}
+		% Auffüllen des Zwischenraums
+		\hfill
+		% minipage mit Grafik
+		\begin{minipage}{0.4\textwidth}
+		
+		\includegraphics[width=.725\linewidth]{githublogo.png}\newline
+
+		
+		
+		\includegraphics[width=.725\linewidth]{bitbucketlogo.png}\newline
+
+		
+		\label{Bild} 
+		\end{minipage}
+		
+		
+		
+	
+	\end{frame}
+	
 
 \end{document}
