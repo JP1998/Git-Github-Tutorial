@@ -136,8 +136,6 @@
 		Since the usage of the git commandline and ui-clients for git work in basically the same way this (written) tutorial only shows you how to use Git and GitHub from the commandline. Other UIs will be shown during the presentation, though.
 		
 		On the topic of commandlines: Every command / file shown in this tutorial is enclosed in a box with a black outline. In case a command is shown, any user input will be denoted by a preceding dollar sign (as it's done by Git for Windows).
-
-	\section{Jean-Pierre}
 		
 	\section{Use your Github user in Git}
 	
@@ -208,7 +206,6 @@ $ git diff
 		\end{lstlisting}
 		
 		The first command will list every change you have made between the given commits. The second will list every change you have made in the given files since the given commit, and the last command will list every change you have made since the last commit. Also note that there are more options on how to use this command than we show you here.
-		\newpage
 		
 		To show files which have been changed, created, deleted or moved (while the last two options only apply to tracked files) you can use the \lstinline|status|-command. It also shows which files are not tracked, or which changes are currently staged to be committed.
 		
@@ -271,10 +268,8 @@ $ git push origin <your version>
 $ git push origin --tags
 		\end{lstlisting}
 		\newpage
-		
-	\section{Daniel}
 			
-	\section{branches}
+	\section{Branches}
 	
 		Git is not only useful for working alone. It is used to manage many users working in a single project on different branches. Branches are different directions the project is heading of to. These can be represented by just older or more recent code or different features that are developed at the same time. To simplify working with different half implemented features, git uses branches. A user that creates a commit on a given branch, lets call it branch A, does not affect work that is already or concurrently done on Branch B. Therefore these two branches are seperate from each other. They may come back together at some point, but they can also stay divergent all the time. Normally the use case of git is to have a master branch of the released version of the product with a develop branch that has experimental new features. Then there are different feature branches that all implement a single new feature. These branches are where the developers spent most of their time. They implement the features they want to and then merge the branch back into develop where the code waits to get released with the next version.
 		
@@ -285,7 +280,7 @@ $ git push origin --tags
 			\caption{Source: \newline\lstinline|https://help.talend.com/reader/GDDhoNyPTrERkrITzE6qPQ/QhAXF8ijSOHq~lhrVCoLKQ|}
 		\end{figure}
 		
-	\section{merging}
+	\section{Merging}
 		
 		To bring two branches back together the user has to merge them. This can either be done by a merge commit or by rebasing the branch that needs to be merged onto the branch it needs to be merged into. A merge commit is a commit, that merges the two branches. The merge itself is started by:
 		
@@ -299,7 +294,7 @@ $ git merge <branchname>
 $ git merge --continue
 		\end{lstlisting}
 		
-	\section{conflict resolving}
+	\section{Conflict resolving}
 	
 	If two people change the same line in a file on different branches and one tries to merge them, a conflict will happen.
 	
@@ -331,7 +326,7 @@ $ git add <conflicting-file>
 	
 	and then go on adding more files and finally committing these changes.
 		
-	\section{rebasing}
+	\section{Rebasing}
 		When you want to avoid a merge commit, a rebase is what you want. Rebasing a branch means to change the point, where it is diverging from the other branches to the point given in the command.
 		
 		\begin{figure}[h]
@@ -378,15 +373,15 @@ pick db3e8b4 add Daniels part to slides
 		
 		As we are using GitHub in our group, we focus on GitHub for now. But most of the features mentioned here work pretty much the same for the other services. The first thing is 
 		
-		\subsubsection{branch protection}
+		\subsubsection{Branch protection}
 		
 			As you work with other people, it gets more and more important to secure some branches. These secured branches can (depending on the configuration) normally not be simply pushed to. Also you can just disable force pushes, making the commits immutable.
 		
-		\subsubsection{pull requests}
+		\subsubsection{Pull requests}
 		
 			If a branch is protected from pushing, you will probably need a pull request for your changes to be added to it. A pull request, is a request you make for the other collaborators to check your changes and review them. Once you reach the configured threshold of reviews, your changes can be merged. Within the GUI you then have the same merge options as previously explained.
 		
-		\subsubsection{issues}
+		\subsubsection{Issues}
 		
 			On GitHub there is also a Ticket System for users that have problems with your project. One can raise a bug or create a ticket in general to which the collaborators can write comments and do their best to resolve the issue.
 
