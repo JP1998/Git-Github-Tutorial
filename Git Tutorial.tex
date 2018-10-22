@@ -347,6 +347,33 @@ $ git rebase <commit id / branch>
 		
 		When typing this, git rolls back to the point where the two branches diverged, then applies all the commits that happened to the point you specified in your command and then tries to apply all the commits that happened on the current branch since it diverged. Again, if there are no conflicting changes, the rebase is successful and your branch can now be merged with the \lstinline|--ff-only| option, meaning all the changes will be copied over to the branch you are merging into without creating new commits.
 		
+	\section {Rewriting history}
+	
+	Sometimes you make mistakes and you have to fix them. Therefore you can rewrite gits history. You can do that by rebasing interactively using:\newline
+	\lstinline|$ git rebase -i HEAD~<number>|\newline
+	where \lstinline|<number>| is the number of commits you want to go back and edit. When you rebase interactively on commandline, your editor opens a file containing something like this:
+		\newpage
+		\begin{lstlisting}[basicstyle=\tiny]
+pick ce28e71 change gitignore intellij
+pick 4067bbb Add chapter about tags
+pick 78580c3 Change some slides
+pick 1641359 Complete my slides
+pick 091611d add current pdf version
+pick db3e8b4 add Daniels part to slides
+
+# Rebase 3a4a271..db3e8b4 onto 3a4a271 (7 commands)
+#
+# Commands:
+# p, pick <commit> = use commit
+# r, reword <commit> = use commit, but edit the commit message
+# e, edit <commit> = use commit, but stop to amend
+# s, squash <commit> = use commit, but meld into previous commit
+# These lines can be re-ordered; they are executed from top to bottom.                                                           
+#
+# If you remove a commit here THAT COMMIT WILL BE LOST.
+		\end{lstlisting}
+		
+		On top are the commits. Below that (in this case shortened for better overview) is the commands you can do with them. To execute the commands on these commits, you simply change the word in front (normally "pick") to whatever command you want to execute. These commands are explained below in the comments of the file, therefore we will not explain them all individually.
 	\section{GitHub (\& Others)}
 		
 		As we are using GitHub in our group, we focus on GitHub for now. But most of the features mentioned here work pretty much the same for the other services. The first thing is 
