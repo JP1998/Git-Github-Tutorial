@@ -1,0 +1,142 @@
+\documentclass[a4paper, 12pt]{article}
+
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{fancyhdr}
+
+\lhead[]{DHBW Karlsruhe}
+\chead[]{}
+\rhead[]{22. Oktober 2018}
+
+\lfoot[]{Daniel Schädler \& Jean-Pierre Hotz}
+\cfoot[]{}
+\rfoot[]{\thepage}
+
+\usepackage[pagesize]{typearea}
+
+\usepackage[a4paper,headheight=62pt,margin=2.5cm,includeheadfoot]{geometry}
+ 
+\usepackage{textcomp}
+
+\usepackage{float}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+
+\usepackage{caption}
+\usepackage{subcaption}
+
+\usepackage{setspace}
+\onehalfspacing
+
+\usepackage{enumitem}
+
+%Preamble
+\usepackage{listings}
+\usepackage{color}
+
+\pagestyle{empty}
+
+%\definecolor{name}{rgb}{0.5,0.5,0.5}
+%\lstset{key1=value1,key2=value2} % Define listings style
+ 
+%Document body
+%\begin{lstlisting}
+% Add code here
+%\end{lstlisting}
+ 
+% Or load from file
+%\lstinputlisting{filename.java}
+
+\definecolor{sourcecodered}{rgb}{0.6,0,0} % for strings
+\definecolor{sourcecodegreen}{rgb}{0.25,0.5,0.35} % comments
+\definecolor{sourcecodepurple}{rgb}{0.5,0,0.35} % keywords
+\definecolor{sourcecodedocblue}{rgb}{0.25,0.35,0.75} % javadoc
+ 
+\lstset{
+	language=C,                                    % the language of the code
+	basicstyle=\ttfamily\small,                    % the size of the fonts that are used for the code
+	keywordstyle=\ttfamily\small,                  % keyword style
+	stringstyle=\ttfamily\small,                   % string literal style
+	commentstyle=\ttfamily\small,                  % comment style
+	numbers=none,                                  % where to put the line-numbers; possible values are (none, left, right)
+	numberstyle=\small\color{black},               % the style that is used for the line-numbers
+	numbersep=6pt,                                 % how far the line-numbers are from the code
+	tabsize=4,	                   	               % sets default tabsize to 4 spaces
+	showspaces=false,                              % show spaces everywhere adding particular underscores; it overrides 'showstringspaces'
+	showstringspaces=false,                        % underline spaces within strings only
+	showtabs=false,                                % show tabs within strings adding particular underscores
+%	title=\lstname,                                % show the filename of files included with \lstinputlisting; also try caption instead of title
+	breaklines=true,                               % sets automatic line breaking
+	breakatwhitespace=true,                             % sets if automatic breaks should only happen at whitespace
+	frame=single,	                                     % adds a frame around the code
+	rulecolor=\color{black},                             % if not set, the frame-color may be changed on line-breaks within not-black text (e.g. comments (green here))
+	literate=%
+		{Ö}{{\"O}}1
+		{Ä}{{\"A}}1
+		{Ü}{{\"U}}1
+		{ß}{{\ss}}1
+		{ü}{{\"u}}1
+		{ä}{{\"a}}1
+		{ö}{{\"o}}1
+		{~}{{\textasciitilde}}1
+	% backgroundcolor=\color{white},      % choose the background color; you must add \usepackage{color} or \usepackage{xcolor}; should come as last argument
+	% captionpos=b,                       % sets the caption-position to bottom
+	% deletekeywords={...},               % if you want to delete keywords from the given language
+	% escapeinside={\%*}{*)},             % if you want to add LaTeX within your code
+	% extendedchars=true,                 % lets you use non-ASCII characters; for 8-bits encodings only, does not work with UTF-8
+	% keepspaces=true,                    % keeps spaces in text, useful for keeping indentation of code (possibly needs columns=flexible)
+	% morekeywords={*,...},               % if you want to add more keywords to the set
+	% stepnumber=2,                       % the step between two line-numbers. If it's 1, each line will be numbered
+}
+
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+\usepackage{braket}
+
+\usepackage{tikz}
+
+\usetikzlibrary{arrows,decorations.markings}
+
+\tikzstyle{arrow} = [->,>=stealth]
+\tikzset{nicearrow/.style={decoration={markings,mark=at position 1 with %
+			{\arrow[scale=3,>=stealth]{>}}},postaction={decorate}}}
+
+\usepackage{acronym}
+
+\usepackage[font=footnotesize]{caption}
+
+\usepackage{tcolorbox}
+
+\begin{document}
+	
+	\begin{center}
+		\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+		\HRule \\[0.8cm]
+		{ \huge \bfseries Git \& GitHub Tutorial - Exercises}\\[0.4cm]
+		{\LARGE \bfseries Software-Engineering}\\[0.4cm]
+		\HRule \\[1.5cm]
+		\begin{center}
+			by\\[0.2cm]
+			Daniel Schädler and Jean-Pierre Hotz\\[0.7cm]
+			22. October 2018
+		\end{center}
+		\vfill
+		Course: TINF17B4\\
+		Lecturer: K. Berkling, Ph.D.
+	\end{center}
+	\newpage
+	\pagestyle{fancy}
+	
+	\begin{enumerate}
+		\item[1.] Create a coding project (in a programming language your partner is also able to program in) with the IDE of your choice. Initialize a Git repository in the project folder, and add a \lstinline|.gitignore|-file, so only source code files and the \lstinline|.gitignore|-file itself are shown by Git. Then make an initial commit with all files that belong to the project.\\
+		\item[2.] Make your code read a name from the command line and greet the user. Those changes are to be committed to your local repository.\\
+		\item[3.] To work with a partner you should now add your remote repository from github to this project and push your changes to it.\\
+		\item[4.] Let your partner clone your repository. Afterwards you should both change the greeting message for the user (You both should use different messages! Get creative with them!). You both will commit those changes. Let your partner push his changes. Now you should push your changes! Resolve any conflicts that may come up.\\ 
+		\item[5.] This exercise is optional, and can be done in case there is some time left after you're done.\\
+		Fork the repository found at the url \lstinline|https://github.com/JP1998/GitTutRepo| and clone your fork. Add an \lstinline|else if|-statement, which checks the variable \lstinline|name| for being your name. Inside this statement you may add a greeting with your name. Afterwards commit and push your changes, and create a pull request from your fork to the original repository.
+	\end{enumerate}
+	
+\end{document}
